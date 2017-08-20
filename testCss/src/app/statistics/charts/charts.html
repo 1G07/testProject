@@ -1,0 +1,7 @@
+<div google-chart chart="vm.collectedEventsChart" style="height:600px; width:100%;" agc-on-select="vm.removeFromEventsChart(selectedItem)"></div>
+<select ng-change="vm.addToEventsChart(legend)" ng-model="vm.selectedEventLegend">
+    <option ng-repeat="legend in vm.collectedEventsPossibleLegendFields" value="{{legend.code}}">
+        {{"charts." + legend.code | translate}}
+    </option>
+</select>
+<button ng-click="vm.changeEventsChartScale()">{{vm.getScaleCode() | translate}}</button>

@@ -1,0 +1,24 @@
+<table ng-if="vm.dateSelected" id="added-revenue" class="added-revenue">
+    <thead>
+        <tr>
+            <th>{{"addedRevenue.recommendationAccepted" | translate}}</th>
+            <th>{{"addedRevenue.itemBought" | translate}}</th>
+            <th>{{"addedRevenue.price" | translate}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-if="vm.addedRevenue.length > 100">
+            <td colspan="3">{{"addedRevenue.useExcelMessage" | translate}}</td>
+        </tr>
+        <tr ng-repeat="revenue in vm.addedRevenues">
+            <td>{{revenue.timeConsumed | date:'dd.MM.yyyy HH:mm'}}
+                [{{vm.getRecommendedConsumedDiff(revenue)}} min]
+            </td>
+            <td>{{revenue.item.title}}</td>
+            <td>{{revenue.quantity}} x {{revenue.price}}</td>
+        </tr>
+    </tbody>
+</table>
+<div ng-if="!vm.dateSelected">
+    {{"addedRevenue.pleaseSelectTimeRange" | translate }}
+</div>

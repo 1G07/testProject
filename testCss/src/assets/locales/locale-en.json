@@ -1,0 +1,87 @@
+{
+  "base": {
+    "ycTitle": "YooChoose Recommendation Engine | Dashboard",
+    "de": "Deutsch",
+    "en": "English",
+    "fr": "French",
+    "logOut": "Logout",
+    "profilePic": "Profile picture",
+    "impress": "Impress",
+    "dataPrivacy": "Data privacy",
+    "contact": "Contact",
+    "STATISTICS": "Statistics",
+    "REVENUE": "Revenue Details",
+    "SCENARIOS": "Scenarios",
+    "MODELS": "Models",
+    "PREVIEW": "Preview",
+    "PLUGIN": "Plugin",
+    "IMPORT": "Import",
+    "EXPORT": "Reco Export",
+    "ABTESTING": "A/B Testing",
+    "SUPPORT": "Support",
+    "showLicenceKey": "Show Licence Key",
+    "editPersonalData": "Edit personal data",
+    "saveChanges": "saveChanges"
+  },
+  "userDetails": {
+    "licenseKey": "Your license key",
+    "personalDetails": "Personal Details",
+    "email": "Email",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "changePassword": "Change your password"
+  },
+  "contractDetails": {
+    "contractDetails": "Contract Details",
+    "company": "Company",
+    "phone": "Phone",
+    "streetAndNr": "Street and nr.",
+    "zip": "ZIP",
+    "city": "City",
+    "country": "Country"
+  },
+  "modals": {
+    "saveSuccess": "The data was saved successfully."
+  },
+  "statistics": {
+    "24H": "Last 24h",
+    "7Days": "Last 7 days",
+    "30Days": "Last 30 days",
+    "month": "Last Month",
+    "custom": "Custom",
+    "from": "From",
+    "to": "To",
+    "selectDate": "Select a date...",
+    "compareWith": "Compare with same timeframe starting from",
+    "compare": "Compare",
+    "resetCompare": "Reset compare",
+    "downloadCSV": "Download detailed statistics",
+    "addedRevenue": "Added revenue"
+  },
+  "addedRevenue": {
+    "pleaseSelectTimeRange": "Please select the time range",
+    "recommendationAccepted": "Recommendation accepted",
+    "itemBought": "Item bought",
+    "price": "Price (EUR)",
+    "useExcelMessage": "More than 100 found. Use excel export to get all the records."
+  },
+  "charts": {
+    "collectedEvents": "Collected events",
+    "basketEvents": "Basket",
+    "blacklistEvents": "Blacklist",
+    "clickEvents": "Click",
+    "clickedRecommended": "Recommended",
+    "consumeEvents": "Consume",
+    "deliveredRecommendations": "Delivered Recommendations",
+    "purchaseEvents": "Purchase",
+    "purchasedRecommended": "Purchase Recommended",
+    "rateEvents": "Rate",
+    "recommendationCalls": "Recommendation Calls",
+    "renderedEvents": "Rendered",
+    "revenue": "Revenue",
+    "revenueFresh": "Revenue fresh",
+    "total": "Total",
+    "linearScale": "Linear scale",
+    "logScale": "Log scale"
+  }
+}

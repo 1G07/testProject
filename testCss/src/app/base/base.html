@@ -1,0 +1,105 @@
+<header class="ez-page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-right">
+                    <select name="availableProfiles" id="available-profiles" ng-if="vm.availableProfiles.length > 1"
+                            ng-model="vm.currentProfileId" ng-change="vm.changeCurrentProfile()">
+                        <option ng-repeat="account in vm.availableProfiles" value="{{account.baseInformation.id}}">
+                            {{account.baseInformation.id}}: {{account.baseInformation.website}}
+                        </option>
+                    </select>
+                    <!--TODO: Remove all comments, which are there for testing purposes-->
+                    <!--<select name="" id="">-->
+                        <!--<option>Content name</option>-->
+                        <!--<option>Priority</option>-->
+                        <!--<option>Modification date</option>-->
+                        <!--<option>Publication date</option>-->
+                        <!--<option>Location path</option>-->
+                    <!--</select>-->
+                    <div class="user-profile-wrapper" ng-click="vm.openProfileInfo()" ng-blur="vm.closeUserInfoSubMenu()">
+                        <img class="profile-picture"
+                             src="http://via.placeholder.com/60x60"
+                             alt="{{'base.profilePic' | translate}}"/>
+                        <span class="user-fullname">
+                            <!--Igor <br> Pesic-->
+                            {{vm.currentProfile.loginInfo.firstName}} <br> {{vm.currentProfile.loginInfo.lastName}}
+                        </span>
+                        <ul class="user-info" ng-class="{'visible' : vm.showUserInfo}">
+                            <li><a ng-click="vm.showLicenceKey()">{{"base.showLicenceKey" | translate}}</a></li>
+                            <li><a ng-click="vm.openEditUser()">{{"base.editPersonalData" | translate}}</a></li>
+                        </ul>
+                    </div>
+                    <button class="ez-button logout" ng-click="vm.logout()">{{"base.logOut" | translate}}</button>
+                    <select ng-model="vm.currentLanguage" ng-change="vm.changeCurrentLanguage()">
+                        <option ng-repeat="language in vm.possibleLanguages" value="{{language}}">
+                            {{"base." + language | translate}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="main-menu-container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logo-area">
+                    <img src="../../assets/images/ycLogo.gif"/>
+                </div>
+                <div class="flex-wrapper">
+                    <div class="container-tabs">
+                        <div class="ez-tabs">
+                            <ul class="ez-tabs-list tab-menu main-tab-menu" role="tablist">
+                                <li class="ez-tabs-label"
+                                    ng-repeat="navigationBarCode in vm.currentProfile.loginInfo.navigationMenuOptions"
+                                    ng-class="{'selected': vm.tabShouldBeSelected(vm.allTabs[navigationBarCode].code)}">
+                                    <a role="tab" data-toggle="tab" ng-click="vm.goToTab(vm.allTabs[navigationBarCode].code)">
+                                        {{"base." + vm.allTabs[navigationBarCode].code | translate}}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="tab-content-container">
+                    <div ui-view></div>
+                    <yc-license-details class="license-details" ng-class="{'visible': vm.displayLicenseModal}"></yc-license-details>
+                    <yc-user-details class="user-details" ng-class="{'visible': vm.displayUserModal}"></yc-user-details>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="pull-left">
+                    Copyright 2009-{{vm.currentYear}} YOOCHOOSE GmbH
+                </div>
+                <div class="pull-right footer-navigation">
+                    <a id="corporate" href="https://www.yoochoose.com/Imprint">
+                        {{"base.impress" | translate}}
+                    </a>
+                    <a id="privacy" href="https://www.yoochoose.com/Data-Privacy">
+                        {{"base.dataPrivacy" | translate}}
+                    </a>
+                    <a id="contact" href="https://www.yoochoose.com/About-Us/Contact-us">
+                        {{"base.contact" | translate}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

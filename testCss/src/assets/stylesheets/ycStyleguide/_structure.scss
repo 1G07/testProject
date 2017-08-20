@@ -1,0 +1,49 @@
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+}
+
+ez-platform-ui-app {
+    display: flex;
+    flex: 1 0 100%;
+    flex-direction: column;
+}
+
+ez-navigation-hub {
+    flex: 0 0;
+}
+
+div#app-content {
+    flex: 1 0;
+    display: flex;
+}
+
+#discovery {
+    flex: 0 0 var(--ez-toolbar-width);
+    width: var(--ez-toolbar-width);
+    background: var(--ez-color-discovery-bar);
+    color: var(--ez-color-text-base-inverted);
+}
+
+ez-toolbar .ez-button {
+    white-space: normal;
+    width: 100%;
+    text-align: center;
+
+    background: transparent;
+    border-color: transparent;
+}
+
+main {
+    flex: 1 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main > *:first-child {
+    flex: 1 1;
+}

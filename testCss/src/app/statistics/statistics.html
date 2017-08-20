@@ -1,0 +1,92 @@
+<div class="flex-wrapper">
+    <div class="ez-tabs pull-left">
+    <ul class="ez-tabs-list tab-menu" role="tablist">
+        <li ng-repeat="timeframe in vm.timeframes"
+            class="ez-tabs-label"
+            ng-class="{'selected': vm.timeRange === timeframe['code']}">
+            <a role="tab" data-toggle="tab" ng-click="vm.setSelectedTimeRange(vm.timeframes[timeframe['code']])">
+                {{"statistics." + timeframe['code']  | translate}}
+            </a>
+        </li>
+        <li class="ez-tabs-label" ng-class="{'selected': vm.timeRange === 'custom'}">
+            <a role="tab" data-toggle="tab" ng-click="vm.setSelectedTimeRange('custom')">
+                {{"statistics.custom" | translate}}
+            </a>
+        </li>
+    </ul>
+</div>
+    <div class="from-to-date-pickers-wrapper">
+        <div class="from-to-date-pickers form-inline">
+            <label for="from-date">{{"statistics.from" | translate}}</label>
+            <input id="from-date"
+                   class="form-control"
+                   name="fromDate"
+                   readonly
+                   placeholder="{{'statistics.selectDate' | translate}}"
+                   moment-picker="vm.customFromDate"
+                   ng-model="vm.customFromDate"
+                   change="vm.setMinToDate()"
+                   start-view="month"
+                   format="D/MMM/YYYY"
+                   disable="vm.timeRange !== 'custom'"
+                   max-date="vm.maxFromDate">
+            <label for="to-date">{{"statistics.to" | translate}}</label>
+            <input id="to-date"
+                   class="form-control"
+                   name="toDate"
+                   readonly
+                   placeholder="{{'statistics.selectDate' | translate}}"
+                   moment-picker="vm.customToDate"
+                   ng-model="vm.customToDate"
+                   change="vm.updateOnCustomDateChange()"
+                   start-view="month"
+                   format="D/MMM/YYYY"
+                   disable="vm.timeRange !== 'custom' || (!vm.customFromDate || vm.customFromDate == '')"
+                   min-date="vm.minToDate"
+                   max-date="vm.maxToDate">
+        </div>
+    </div>
+</div>
+<div class="compare-excel-container">
+    <div class="link-container">
+        <a class="ez-button ez-button-ghost"
+           ng-show="vm.isStatisticsChartsState"
+           ng-class="{'disabled': vm.timeRange === 'custom' && (!vm.customToDate || vm.customToDate == '')}"
+           ng-href="https://admin.test.yoochoose.net/api/v3/{{vm.customerId}}/revenue/statistic.xlsx?from_date_time={{vm.fromDate}}&to_date_time={{vm.toDate}}&granularity={{vm.granularity}}"
+           download>
+            <img class="excel-icon" src="assets/images/excelIcon.png"/>{{"statistics.downloadCSV" | translate}}
+        </a>
+        <a class="ez-button ez-button-ghost"
+           ng-show="!vm.isStatisticsChartsState"
+           ng-class="{'disabled': vm.timeRange === 'custom' && (!vm.customToDate || vm.customToDate == '')}"
+           ng-href="https://admin.test.yoochoose.net/api/v4/{{vm.customerId}}/statistic/added_revenue.xlsx?from_date_time={{vm.fromDate}}&to_date_time={{vm.toDate}}"
+           download>
+            <img class="excel-icon" src="assets/images/excelIcon.png"/>{{"statistics.downloadCSV" | translate}}
+        </a>
+    </div>
+    <div class="compare-container" ng-if="vm.isStatisticsChartsState">
+        <div class="form-inline">
+            <label for="compare-from-date">{{"statistics.compareWith" | translate}}</label>
+            <input class="form-control" id="compare-from-date"
+                   name="compareFromDate"
+                   readonly
+                   placeholder="{{'statistics.selectDate' | translate}}"
+                   moment-picker="vm.compareFromDate"
+                   ng-model="vm.compareFromDate"
+                   change="vm.setChosenCompareFromToDate()"
+                   start-view="month"
+                   format="D/MMM/YYYY"
+                   disable="vm.timeRange === 'custom' && (!vm.customToDate || vm.customToDate == '')"
+                   max-date="vm.compareMaxDate">
+            <button ng-disabled="(vm.timeRange === 'custom' && (!vm.customToDate || vm.customToDate == '')) || vm.compareFromDate === ''"
+                    ng-click="vm.compare()" ng-show="vm.isCompareMode">
+                {{"statistics.compare" | translate}}
+            </button>
+            <button ng-click="vm.resetCompare()"
+                    ng-show="!vm.isCompareMode">
+                {{"statistics.resetCompare" | translate}}
+            </button>
+        </div>
+    </div>
+</div>
+<ui-view></ui-view>

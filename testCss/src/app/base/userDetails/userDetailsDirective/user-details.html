@@ -1,0 +1,45 @@
+<div id="modal2" class="ez-modal ez-modal-header-nofooter" role="dialog" aria-labelledby="ez-modal">
+    <div class="modal-container">
+        <div class="modal-content">
+            <div class="header" aria-labelledby="ez-modal_header">
+                <a ng-click="vm.close()" data-dismiss="modal"><span class="ez-icon-discard">X</span></a>
+            </div>
+            <div class="body" aria-labelledby="ez-modal_body">
+                <div class="clearfix">
+                    <h1>{{"userDetails.personalDetails" | translate}}</h1>
+                    <form name="userData" id="user-data">
+                        <label for="user-email">{{"userDetails.email" | translate}}</label>:
+                        <input id="user-email" name="userEmail" type="text"  readonly ng-model="vm.user.id"/><br/>
+                        <label for="user-first-name">{{"userDetails.firstName" | translate}}</label>:
+                        <input id="user-first-name" name="userFirstName" type="text" ng-model="vm.user.firstName"/><br/>
+                        <label for="user-last-name">{{"userDetails.lastName" | translate}}</label>:
+                        <input id="user-last-name" name="userLastName" type="text" ng-model="vm.user.lastName"/><br/>
+                    </form>
+                    <a href="https://admin.test.yoochoose.net/password.html">{{"userDetails.changePassword" | translate}}</a>
+                    <h1>{{"contractDetails.contractDetails" | translate}}</h1>
+                    <form name="contractData" id="contract-data">
+                        <label for="contract-email">{{"userDetails.email" | translate}}</label>:
+                        <input id="contract-email" name="contractEmail" type="text" ng-model="vm.contract.email"/><br/>
+                        <label for="contract-company">{{"contractDetails.company" | translate}}</label>:
+                        <input id="contract-company" name="contractEmail" type="text" ng-model="vm.contract.company"/><br/>
+                        <label for="contract-first-name">{{"userDetails.firstName" | translate}}</label>:
+                        <input id="contract-first-name" name="contractFirstName" type="text" ng-model="vm.contract.firstName"/><br/>
+                        <label for="contract-last-name">{{"userDetails.lastName" | translate}}</label>:
+                        <input id="contract-last-name" name="contractLastName" type="text" ng-model="vm.contract.lastName"/><br/>
+                        <label for="contract-phone">{{"contractDetails.phone" | translate}}</label>:
+                        <input id="contract-phone" name="contractPhone" type="text" ng-model="vm.contract.phone"/><br/>
+                        <label for="contract-street">{{"contractDetails.streetAndNr" | translate}}</label>:
+                        <input id="contract-street" name="contractStreet" type="text" ng-model="vm.contract.address.street"/><br/>
+                        <label for="contract-zip">{{"contractDetails.zip" | translate}}</label>:
+                        <input id="contract-zip" name="contractZip" type="text" ng-model="vm.contract.address.zip"/><br/>
+                        <label for="contract-city">{{"contractDetails.city" | translate}}</label>:
+                        <input id="contract-city" name="contractCity" type="text" ng-model="vm.contract.address.city"/><br/>
+                        <label for="contract-country">{{"contractDetails.country" | translate}}</label>:
+                        <input id="contract-country" name="contractCountry" type="text" ng-model="vm.contract.address.country"/><br/>
+                    </form>
+                    <button ng-click="vm.saveChanges()">{{"base.saveChanges" | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
